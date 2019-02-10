@@ -81,8 +81,8 @@ void pop()
         printf("\n\nStack is Underflow");
     }
     else{
-        printf("Element %d remove from stack",stack[top--]);
-        //top--;
+        printf("Element %d remove from stack",stack[top]);
+        top--; //you can do this also
     }
 }
 

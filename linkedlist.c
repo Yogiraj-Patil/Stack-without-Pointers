@@ -17,7 +17,8 @@ int main()
     printf("5. Display\n");
     printf("6. Delete\n");
     printf("7. Swap\n");
-    printf("8. Quit\n\n");
+    printf("8. Reverse List\n");
+    printf("9. Quit\n\n");
     printf("Enter Your Choice:\n"); scanf("%d",&ch);
     switch(ch)
     {
@@ -37,10 +38,12 @@ int main()
         case 6: printf("\nEnter The Location: "); scanf("%d",&loc);
                 deletefunction(&loc);
         break;
-        case 8:  exit(1);
+        case 8:  reverse();
         break;
         case 7: printf("\nEnter the location: "); scanf("%d",&ch);
                 swap(ch);
+        break;
+        case 9: exit(1);
         break;
     }
     }
@@ -53,6 +56,31 @@ struct node* link;
 
 };
 struct node* root = NULL;
+
+
+void reverse(){
+
+struct node *p,*q;
+int i,j,k,temp;
+j=lenght() -1;
+i=0; p=q=root;
+while(i<j){
+    k=0;
+    while(k<j){
+        q = q->link;
+        k++;
+    }
+    temp = q->data;
+    q->data = p->data;
+    p->data = temp;
+
+    i++;
+    j--;
+    p = p->link;
+    q=root;
+}
+
+}
 
 
 void swap(int loc)

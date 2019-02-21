@@ -16,7 +16,8 @@ int main()
     printf("4. length\n");
     printf("5. Display\n");
     printf("6. Delete\n");
-    printf("7. Quit\n\n");
+    printf("7. Swap\n");
+    printf("8. Quit\n\n");
     printf("Enter Your Choice:\n"); scanf("%d",&ch);
     switch(ch)
     {
@@ -33,10 +34,13 @@ int main()
         break;
         case 5: traverse();
         break;
-        case 6: printf("\nEnter The Location:"); scanf("%d",&loc);
+        case 6: printf("\nEnter The Location: "); scanf("%d",&loc);
                 deletefunction(&loc);
         break;
-        case 7: exit(1);
+        case 8:  exit(1);
+        break;
+        case 7: printf("\nEnter the location: "); scanf("%d",&ch);
+                swap(ch);
         break;
     }
     }
@@ -49,6 +53,37 @@ struct node* link;
 
 };
 struct node* root = NULL;
+
+
+void swap(int loc)
+{
+    if(lenght() < loc){
+        printf("\nPlease Enter Valid location\n");
+    }else{
+        struct node* temp; struct node* q; struct node* r;
+        temp=root;
+        int i=1;
+        while(i<loc-1)
+        {
+            temp = temp->link;
+            i++;
+        }
+        //q = (struct node*)malloc(sizeof(struct node));
+        q = temp->link;
+        r = q->link;
+
+        q->link = r->link;
+        r->link = q;
+        temp->link = r;
+
+        printf("\nSwapping successfully\n");
+        traverse();
+
+    }
+}
+
+
+
 
 void deletefunction(int* loc){
    struct node* temp;
@@ -153,9 +188,10 @@ else{
     printf("Linked List Data is below \n");
     while(temp != NULL)
     {
-        printf("%d\n",temp->data);
+        printf("%d -> ",temp->data);
         temp = temp->link;
     }
+    printf("NULL");
     printf("\n\n");
 }
 }
